@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_app_admin/screens/widgets/side_menu.dart';
+import 'package:food_app_admin/screens/dashboard/dashboard.dart';
+import 'package:food_app_admin/screens/main_screen/widgets/side_menu.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -9,16 +10,19 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Expanded(
               child: SideMenu(),
             ),
             Expanded(
-              flex: 5,
-              child: Container(
-                color: Colors.purple,
-              ),
+              flex: 4,
+              child: DashboardScreen(),
             ),
+            // Expanded(
+            //   flex: 1,
+            //   child: Text('dgdg'),
+            // ),
           ],
         ),
       ),

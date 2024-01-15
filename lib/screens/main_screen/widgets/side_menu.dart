@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:food_app_admin/screens/widgets/drawe_listtile.dart';
+import 'package:food_app_admin/screens/main_screen/widgets/drawe_listtile.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -19,15 +19,18 @@ class SideMenu extends StatelessWidget {
               ),
             ),
             DrawerListTile(
+              icon: Icon(Icons.home),
               title: 'dashboard',
               ontap: () {},
             ),
             DrawerListTile(
+              icon: Icon(Icons.beenhere_outlined),
               title: 'Orders',
               ontap: () {},
             ),
             DrawerListTile(
-              title: 'dashboard',
+              icon: Icon(Icons.menu_book),
+              title: 'Menu',
               ontap: () {},
             ),
           ],

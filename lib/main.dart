@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app_admin/screens/main_screen.dart';
+import 'package:food_app_admin/screens/main_screen/main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Food app admin',
       theme: ThemeData(
-        
         useMaterial3: true,
       ),
       home: const MainScreen(),
