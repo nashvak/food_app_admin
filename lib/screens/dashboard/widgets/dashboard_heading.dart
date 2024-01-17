@@ -11,7 +11,7 @@ class DashboardHeading extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
+        const Text(
           'Dashboard',
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
@@ -20,9 +20,9 @@ class DashboardHeading extends StatelessWidget {
           height: 30,
           child: TextFormField(
             decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 hintText: 'Search',
-                contentPadding: EdgeInsets.all(0),
+                contentPadding: const EdgeInsets.all(0),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 )),

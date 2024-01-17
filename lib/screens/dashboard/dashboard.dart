@@ -14,8 +14,8 @@ class DashboardScreen extends StatelessWidget {
             // mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DashboardHeading(),
-              SizedBox(
+              const DashboardHeading(),
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -23,33 +23,33 @@ class DashboardScreen extends StatelessWidget {
                   DashboardCard(
                     title: 'Total orders',
                     amount: 50,
-                    icon: Icon(Icons.food_bank),
+                    icon: const Icon(Icons.food_bank),
                     background: Colors.red.shade200,
                   ),
                   DashboardCard(
                     title: 'Not compeleted',
                     amount: 10,
-                    icon: Icon(Icons.food_bank),
+                    icon: const Icon(Icons.food_bank),
                     background: Colors.green.shade200,
                   ),
                   DashboardCard(
                     title: 'Delivered',
                     amount: 20,
-                    icon: Icon(Icons.food_bank),
+                    icon: const Icon(Icons.food_bank),
                     background: Colors.purple.shade200,
                   ),
                   DashboardCard(
                     title: 'Cancelled',
                     amount: 10,
-                    icon: Icon(Icons.food_bank),
+                    icon: const Icon(Icons.food_bank),
                     background: Colors.orange.shade200,
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              Text(
+              const Text(
                 'Summary',
                 style: TextStyle(fontSize: 25),
               )
@@ -86,7 +86,7 @@ class DashboardCard extends StatelessWidget {
             Text(title),
             Text(
               amount.toString(),
-              style: TextStyle(fontSize: 25),
+              style: const TextStyle(fontSize: 25),
             )
           ],
         ),

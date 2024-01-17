@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_app_admin/responsive_design/mobile_scaffold.dart';
+import 'package:food_app_admin/responsive_design/responsive.dart';
+import 'package:food_app_admin/responsive_design/tablet_scaffold.dart';
 import 'package:food_app_admin/screens/main_screen/main_screen.dart';
 
 void main() {
@@ -16,7 +19,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const MainScreen(),
+      home: const Responsive(
+        mobile: MobileScaffold(),
+        desktop: MainScreen(),
+        tablet: TabletScaffold(),
+      ),
     );
   }
 }

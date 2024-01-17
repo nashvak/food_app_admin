@@ -7,12 +7,12 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Expanded(
+            Expanded(
               child: SideMenu(),
             ),
             Expanded(

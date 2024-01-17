@@ -19,17 +19,18 @@ class SideMenu extends StatelessWidget {
               ),
             ),
             DrawerListTile(
-              icon: Icon(Icons.home),
+              icon: const Icon(Icons.home),
               title: 'dashboard',
               ontap: () {},
             ),
             DrawerListTile(
-              icon: Icon(Icons.beenhere_outlined),
+              // icon: Image.asset(name),
+              icon: const Icon(Icons.beenhere_outlined),
               title: 'Orders',
               ontap: () {},
             ),
             DrawerListTile(
-              icon: Icon(Icons.menu_book),
+              icon: const Icon(Icons.menu_book),
               title: 'Menu',
               ontap: () {},
             ),
