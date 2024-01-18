@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:food_app_admin/constants/app_colors.dart';
 import 'package:food_app_admin/constants/app_styles.dart';
 import 'package:food_app_admin/responsive_design/responsive.dart';
-import 'package:food_app_admin/screens/login/widgets/login_button.dart';
-import 'package:food_app_admin/screens/login/widgets/logo_container.dart';
+import 'package:food_app_admin/screens/login/login.dart';
+import 'package:food_app_admin/screens/login/widgets/first_heading.dart';
 import 'package:food_app_admin/screens/main_screen/main_screen.dart';
-import 'package:food_app_admin/screens/signup/signup.dart';
 
-import 'widgets/first_heading.dart';
-import 'widgets/login_details_heading.dart';
-import 'widgets/login_textfield.dart';
+import '../login/widgets/login_button.dart';
+import '../login/widgets/login_details_heading.dart';
+import '../login/widgets/login_textfield.dart';
+import '../login/widgets/logo_container.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +49,7 @@ class LoginScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(height: height * 0.2),
-                      const FirstHeading(
-                        text: "Log In",
-                      ),
+                      FirstHeading(text: 'Sign In'),
                       SizedBox(height: height * 0.02),
                       Text(
                         'Hey, Enter your details to get sign in \nto your account.',
@@ -62,6 +60,17 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: height * 0.064),
+                      const LoginDetailsHeading(
+                        text: 'Name',
+                      ),
+                      const SizedBox(height: 6.0),
+                      LoginTextfield(
+                        width: width,
+                        text: 'Enter name',
+                        icon: Icons.person,
+                        obscure: false,
+                      ),
+                      SizedBox(height: height * 0.02),
                       const LoginDetailsHeading(
                         text: 'Email',
                       ),
@@ -81,8 +90,8 @@ class LoginScreen extends StatelessWidget {
                         width: width,
                         text: 'Enter Password',
                         icon: Icons.lock,
-                        obscure: true,
                         suffix: const Icon(Icons.visibility_off),
+                        obscure: true,
                       ),
                       SizedBox(height: height * 0.03),
                       Align(
@@ -101,29 +110,30 @@ class LoginScreen extends StatelessWidget {
                       ),
                       SizedBox(height: height * 0.05),
                       LoginButton(
-                          ontap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const MainScreen(),
-                              ),
-                            );
-                          },
-                          text: 'Log In'),
+                        ontap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const MainScreen(),
+                            ),
+                          );
+                        },
+                        text: 'Sign Up',
+                      ),
                       SizedBox(height: height * 0.05),
                       Row(
                         children: [
-                          const Text('Dont have an account? '),
+                          const Text('Back to'),
                           TextButton(
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const SignupScreen(),
+                                  builder: (context) => const LoginScreen(),
                                 ),
                               );
                             },
-                            child: const Text('Sign Up'),
+                            child: const Text('Log In'),
                           ),
                         ],
                       )
