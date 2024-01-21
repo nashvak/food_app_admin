@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:food_app_admin/screens/login/login.dart';
+import 'package:food_app_admin/screens/main_screen/main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       //   desktop: MainScreen(),
       //   tablet: TabletScaffold(),
       // ),
-      home: const LoginScreen(),
+      home: MainScreen(),
     );
   }
 }

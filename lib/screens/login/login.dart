@@ -40,7 +40,7 @@ class LoginScreen extends StatelessWidget {
                 margin: EdgeInsets.symmetric(
                     horizontal: ResponsiveWidget.isMobile(context)
                         ? height * 0.032
-                        : height * 0.12),
+                        : height * 0.06),
                 color: white,
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.only(bottom: 40.0),
@@ -105,7 +105,7 @@ class LoginScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const MainScreen(),
+                                builder: (context) => MainScreen(),
                               ),
                             );
                           },
