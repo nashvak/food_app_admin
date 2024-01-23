@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app_admin/constants/app_colors.dart';
 import 'package:food_app_admin/screens/dashboard/dashboard.dart';
-import 'package:food_app_admin/screens/main_screen/widgets/side_menu.dart';
+// import 'package:food_app_admin/screens/main_screen/widgets/side_menu.dart';
 import 'package:food_app_admin/screens/menu_screen/menu_screen.dart';
 import 'package:food_app_admin/screens/order_screen/order_screen.dart';
 

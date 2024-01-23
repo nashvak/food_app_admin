@@ -11,6 +11,7 @@ class LoginTextfield extends StatelessWidget {
     required this.text,
     this.suffix,
     required this.obscure,
+    required this.controller,
   });
 
   final double width;
@@ -18,6 +19,7 @@ class LoginTextfield extends StatelessWidget {
   final String text;
   final Icon? suffix;
   final bool obscure;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class LoginTextfield extends StatelessWidget {
         color: white,
       ),
       child: TextFormField(
+        controller: controller,
         style: ralewayStyle.copyWith(
           fontWeight: FontWeight.w400,
           color: appColor,

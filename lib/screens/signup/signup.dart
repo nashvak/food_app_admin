@@ -12,8 +12,9 @@ import '../login/widgets/login_textfield.dart';
 import '../login/widgets/logo_container.dart';
 
 class SignupScreen extends StatelessWidget {
-  const SignupScreen({super.key});
-
+  SignupScreen({super.key});
+  final TextEditingController emailcontroller = TextEditingController();
+  final TextEditingController passwordcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -65,6 +66,7 @@ class SignupScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 6.0),
                       LoginTextfield(
+                        controller: emailcontroller,
                         width: width,
                         text: 'Enter name',
                         icon: Icons.person,
@@ -76,6 +78,7 @@ class SignupScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 6.0),
                       LoginTextfield(
+                        controller: emailcontroller,
                         width: width,
                         text: 'Enter email',
                         icon: Icons.email,
@@ -87,6 +90,7 @@ class SignupScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 6.0),
                       LoginTextfield(
+                        controller: passwordcontroller,
                         width: width,
                         text: 'Enter Password',
                         icon: Icons.lock,
@@ -129,7 +133,7 @@ class SignupScreen extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const LoginScreen(),
+                                  builder: (context) => LoginScreen(),
                                 ),
                               );
                             },
