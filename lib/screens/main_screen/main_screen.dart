@@ -17,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    // Size size = MediaQuery.of(context).size;
     final List<Widget> screens = [
       const DashboardScreen(),
       const OrderScreen(),
