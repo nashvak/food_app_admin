@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app_admin/constants/app_colors.dart';
 import 'package:food_app_admin/constants/app_styles.dart';
@@ -50,7 +51,7 @@ class SignupScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(height: height * 0.2),
-                      FirstHeading(text: 'Sign In'),
+                      const FirstHeading(text: 'Sign In'),
                       SizedBox(height: height * 0.02),
                       Text(
                         'Hey, Enter your details to get sign in \nto your account.',
@@ -118,29 +119,40 @@ class SignupScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => MainScreen(),
+                              builder: (context) => const MainScreen(),
                             ),
                           );
                         },
                         text: 'Sign Up',
                       ),
                       SizedBox(height: height * 0.05),
-                      Row(
-                        children: [
-                          const Text('Back to'),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => LoginScreen(),
-                                ),
-                              );
-                            },
-                            child: const Text('Log In'),
-                          ),
-                        ],
-                      )
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            const TextSpan(
+                              text: 'Already have an account?',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            const WidgetSpan(
+                                child: SizedBox(
+                              width: 5,
+                            )),
+                            TextSpan(
+                              text: 'Back to login ',
+                              style: const TextStyle(color: appColor),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => LoginScreen(),
+                                    ),
+                                  );
+                                },
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),

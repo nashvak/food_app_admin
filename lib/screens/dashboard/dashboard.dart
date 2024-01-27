@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app_admin/bloc/auth/auth_bloc.dart';
+import 'package:food_app_admin/bloc/login/login_bloc.dart';
 import 'package:food_app_admin/screens/dashboard/widgets/dashboard_heading.dart';
 import 'package:food_app_admin/screens/login/login.dart';
 
@@ -19,14 +19,14 @@ class DashboardScreen extends StatelessWidget {
         actions: [
           TextButton(
               onPressed: () {
-                context.read<AuthBloc>().add(Logout());
+                context.read<LoginBloc>().add(Logout());
               },
               child: const Text('Logout'))
         ],
       ),
-      body: BlocConsumer<AuthBloc, AuthState>(
+      body: BlocConsumer<LoginBloc, LoginState>(
         listener: (context, state) {
-          if (state is AuthInitial) {
+          if (state is LoginInitial) {
             Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(builder: (context) => LoginScreen()),
@@ -35,7 +35,7 @@ class DashboardScreen extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is AuthLoading) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_app_admin/constants/app_colors.dart';
 import 'package:food_app_admin/screens/dashboard/dashboard.dart';
-// import 'package:food_app_admin/screens/main_screen/widgets/side_menu.dart';
 import 'package:food_app_admin/screens/menu_screen/menu_screen.dart';
 import 'package:food_app_admin/screens/order_screen/order_screen.dart';
 
 class MainScreen extends StatefulWidget {
-  MainScreen({super.key});
+  const MainScreen({super.key});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -59,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
               labelType: NavigationRailLabelType.all,
               selectedLabelTextStyle: const TextStyle(color: appColor),
               unselectedLabelTextStyle: const TextStyle(color: Colors.grey),
-              selectedIconTheme: IconThemeData(color: appColor),
+              selectedIconTheme: const IconThemeData(color: appColor),
               leading: const Column(children: [
                 SizedBox(
                   height: 10,

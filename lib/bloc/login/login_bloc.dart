@@ -1,19 +1,19 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-part 'auth_event.dart';
-part 'auth_state.dart';
+part 'login_event.dart';
+part 'login_state.dart';
 
-class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc() : super(AuthInitial()) {
-    on<LoginButtonPressed>(loginButtonFunction);
-    on<Logout>(logoutFunction);
+class LoginBloc extends Bloc<LoginEvent, LoginState> {
+  LoginBloc() : super(LoginInitial()) {
+    on<LoginEvent>((event, emit) {
+      on<LoginButtonPressed>(loginButtonFunction);
+      on<Logout>(logoutFunction);
+    });
   }
-
   ///////////////////////////////////
-  loginButtonFunction(LoginButtonPressed event, Emitter<AuthState> emit) async {
+  loginButtonFunction(
+      LoginButtonPressed event, Emitter<LoginState> emit) async {
     emit(AuthLoading());
     try {
       final email = event.email;
@@ -29,11 +29,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  void logoutFunction(Logout event, Emitter<AuthState> emit) async {
+  void logoutFunction(Logout event, Emitter<LoginState> emit) async {
     emit(AuthLoading());
     try {
       await Future.delayed(const Duration(seconds: 1), () {
-        return emit(AuthInitial());
+        return emit(LoginInitial());
       });
     } catch (e) {
       emit(LoginFailed(error: e.toString()));

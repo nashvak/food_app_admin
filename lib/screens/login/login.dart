@@ -1,6 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app_admin/bloc/auth/auth_bloc.dart';
+import 'package:food_app_admin/bloc/login/login_bloc.dart';
 import 'package:food_app_admin/constants/app_colors.dart';
 import 'package:food_app_admin/constants/app_styles.dart';
 import 'package:food_app_admin/responsive_design/responsive.dart';
@@ -8,7 +9,6 @@ import 'package:food_app_admin/screens/login/widgets/login_button.dart';
 import 'package:food_app_admin/screens/login/widgets/logo_container.dart';
 import 'package:food_app_admin/screens/main_screen/main_screen.dart';
 import 'package:food_app_admin/screens/signup/signup.dart';
-
 import 'widgets/first_heading.dart';
 import 'widgets/login_details_heading.dart';
 import 'widgets/login_textfield.dart';
@@ -45,7 +45,7 @@ class LoginScreen extends StatelessWidget {
                         ? height * 0.032
                         : height * 0.06),
                 color: white,
-                child: BlocConsumer<AuthBloc, AuthState>(
+                child: BlocConsumer<LoginBloc, LoginState>(
                   listener: (context, state) {
                     if (state is LoginFailed) {
                       ScaffoldMessenger.of(context)
@@ -54,7 +54,8 @@ class LoginScreen extends StatelessWidget {
                     if (state is LoginSuccess) {
                       Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(builder: (context) => MainScreen()),
+                          MaterialPageRoute(
+                              builder: (context) => const MainScreen()),
                           (route) => false);
                     }
                   },
@@ -124,28 +125,56 @@ class LoginScreen extends StatelessWidget {
                           SizedBox(height: height * 0.05),
                           LoginButton(
                               ontap: () {
-                                context.read<AuthBloc>().add(LoginButtonPressed(
-                                    email: emailcontroller.text,
-                                    password: passwordcontroller.text));
+                                context.read<LoginBloc>().add(
+                                    LoginButtonPressed(
+                                        email: emailcontroller.text,
+                                        password: passwordcontroller.text));
                               },
                               text: 'Log In'),
                           SizedBox(height: height * 0.05),
-                          Row(
-                            children: [
-                              const Text('Dont have an account? '),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => SignupScreen(),
-                                    ),
-                                  );
-                                },
-                                child: const Text('Sign Up'),
-                              ),
-                            ],
-                          )
+                          // Row(
+                          //   children: [
+                          //     const Text('Dont have an account? '),
+                          //     TextButton(
+                          //       onPressed: () {
+                          //         Navigator.push(
+                          //           context,
+                          //           MaterialPageRoute(
+                          //             builder: (context) => SignupScreen(),
+                          //           ),
+                          //         );
+                          //       },
+                          //       child: const Text('Sign Up'),
+                          //     ),
+                          //   ],
+                          // )
+                          RichText(
+                            text: TextSpan(
+                              children: [
+                                const TextSpan(
+                                  text: 'Don\'t have an account?',
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                                const WidgetSpan(
+                                    child: SizedBox(
+                                  width: 5,
+                                )),
+                                TextSpan(
+                                  text: 'Register ',
+                                  style: const TextStyle(color: appColor),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => SignupScreen(),
+                                        ),
+                                      );
+                                    },
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     );

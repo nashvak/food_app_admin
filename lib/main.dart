@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app_admin/bloc/login/login_bloc.dart';
 
 import 'package:food_app_admin/screens/login/login.dart';
-import 'package:food_app_admin/screens/main_screen/main_screen.dart';
-// import 'package:food_app_admin/screens/main_screen/main_screen.dart';
-
-import 'bloc/auth/auth_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthBloc(),
+      create: (context) => LoginBloc(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Food app admin',
@@ -29,7 +26,7 @@ class MyApp extends StatelessWidget {
         //   desktop: MainScreen(),
         //   tablet: TabletScaffold(),
         // ),
-        home: MainScreen(),
+        home: LoginScreen(),
       ),
     );
   }
