@@ -34,7 +34,7 @@ class DashboardScreen extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          if (state is AuthLoading) {
+          if (state is AuthLoadingState) {
             return const Center(
               child: CircularProgressIndicator(),
             );

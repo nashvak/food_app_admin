@@ -17,6 +17,7 @@ class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
   final TextEditingController emailcontroller = TextEditingController();
   final TextEditingController passwordcontroller = TextEditingController();
+  //  TabController tabController=TabController(length: 2,vsync: );
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -48,20 +49,62 @@ class LoginScreen extends StatelessWidget {
                 child: BlocConsumer<LoginBloc, LoginState>(
                   listener: (context, state) {
                     if (state is LoginFailed) {
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text(state.error)));
+                      //   ScaffoldMessenger.of(context).showSnackBar(
+                      //     SnackBar(
+                      //       content: Text(state.error),
+                      //     ),
+                      //   );
+                      showDialog<void>(
+                        context: context,
+                        barrierDismissible: false, // user must tap button!
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            // <-- SEE HERE
+                            title: const Text('Error'),
+                            content: SingleChildScrollView(
+                              child: ListBody(
+                                children: <Widget>[
+                                  Text(state.error),
+                                ],
+                              ),
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('ok'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
                     }
                     if (state is LoginSuccess) {
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const MainScreen()),
+                            builder: (context) => const MainScreen(),
+                          ),
                           (route) => false);
                     }
+                    // if (state is GotoSignupPageState) {
+                    //   Navigator.pushAndRemoveUntil(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //         builder: (context) => SignupScreen(),
+                    //       ),
+                    //       (route) => false);
+                    // }
                   },
                   builder: (context, state) {
-                    if (state is AuthLoading) {
-                      return const Center(child: CircularProgressIndicator());
+                    if (state is AuthLoadingState) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    if (state is GotoSignupPageState) {
+                      return SignupScreen();
                     }
                     return SingleChildScrollView(
                       padding: const EdgeInsets.only(bottom: 40.0),
@@ -126,28 +169,13 @@ class LoginScreen extends StatelessWidget {
                           LoginButton(
                               ontap: () {
                                 context.read<LoginBloc>().add(
-                                    LoginButtonPressed(
-                                        email: emailcontroller.text,
-                                        password: passwordcontroller.text));
+                                      LoginButtonPressed(
+                                          email: emailcontroller.text,
+                                          password: passwordcontroller.text),
+                                    );
                               },
                               text: 'Log In'),
                           SizedBox(height: height * 0.05),
-                          // Row(
-                          //   children: [
-                          //     const Text('Dont have an account? '),
-                          //     TextButton(
-                          //       onPressed: () {
-                          //         Navigator.push(
-                          //           context,
-                          //           MaterialPageRoute(
-                          //             builder: (context) => SignupScreen(),
-                          //           ),
-                          //         );
-                          //       },
-                          //       child: const Text('Sign Up'),
-                          //     ),
-                          //   ],
-                          // )
                           RichText(
                             text: TextSpan(
                               children: [
@@ -164,12 +192,9 @@ class LoginScreen extends StatelessWidget {
                                   style: const TextStyle(color: appColor),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => SignupScreen(),
-                                        ),
-                                      );
+                                      context
+                                          .read<LoginBloc>()
+                                          .add(GotoSignupPageButton());
                                     },
                                 ),
                               ],

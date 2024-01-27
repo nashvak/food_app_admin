@@ -1,14 +1,18 @@
 part of 'login_bloc.dart';
 
 @immutable
-sealed class LoginState {}
+abstract class LoginState {}
+
+abstract class LoginActionState extends LoginState {}
 
 final class LoginInitial extends LoginState {}
 
 final class LoginSuccess extends LoginState {
-  final String uid;
+  // final String uid;
 
-  LoginSuccess({required this.uid});
+  // const LoginSuccess({required this.uid});
+  // @override
+  // List<Object?> get props => [uid];
 }
 
 final class LoginFailed extends LoginState {
@@ -17,4 +21,9 @@ final class LoginFailed extends LoginState {
   LoginFailed({required this.error});
 }
 
-final class AuthLoading extends LoginState {}
+final class AuthLoadingState extends LoginState {}
+
+//
+final class GotoSignupPageState extends LoginState {}
+
+// final class SnackbarMessageState extends LoginActionState {}
