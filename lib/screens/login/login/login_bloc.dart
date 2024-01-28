@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
+// import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 // import 'package:meta/meta.dart';
 
@@ -10,25 +10,23 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginInitial()) {
-    on<LoginEvent>((event, emit) {
-      on<LoginButtonPressed>(loginButtonFunction);
-      on<GotoSignupPageButton>(gotoSignupPage);
-      on<Logout>(logoutFunction);
-      // on<GotoSignupPageButton>
-    });
+    on<LoginButtonPressed>(loginButtonFunction);
+    on<GotoSignupPageButton>(gotoSignupPage);
+    on<Logout>(logoutFunction);
+    // on<GotoSignupPageButton>
   }
   ///////////////////////////////////
   loginButtonFunction(
       LoginButtonPressed event, Emitter<LoginState> emit) async {
     emit(AuthLoadingState());
     try {
-      final email = event.email;
+      // final email = event.email;
       final password = event.password;
       if (password.length < 6) {
         return emit(LoginFailed(error: 'Password cannot be less than 6'));
       }
       await Future.delayed(const Duration(seconds: 1), () {
-        // return emit(LoginSuccess(uid: '$email-$password'));
+        return emit(LoginSuccess());
       });
     } catch (e) {
       return emit(LoginFailed(error: e.toString()));

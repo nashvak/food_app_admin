@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app_admin/responsive_design/responsive.dart';
 
 import '../../../constants/app_colors.dart';
 import '../../../constants/app_styles.dart';
@@ -25,9 +26,14 @@ class LoginTextfield extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 50.0,
-      width: width,
+      width: ResponsiveWidget.isMobile(context)
+          ? width
+          : ResponsiveWidget.isTablet(context)
+              ? width * 0.4
+              : width * 0.3,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.0),
+        // color: Colors.red,
         color: white,
       ),
       child: TextFormField(

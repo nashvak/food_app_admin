@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app_admin/bloc/login/login_bloc.dart';
 import 'package:food_app_admin/screens/dashboard/widgets/dashboard_heading.dart';
 import 'package:food_app_admin/screens/login/login.dart';
+
+import '../login/login/login_bloc.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
