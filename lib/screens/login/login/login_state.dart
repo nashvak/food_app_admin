@@ -8,9 +8,9 @@ abstract class LoginActionState extends LoginState {}
 final class LoginInitial extends LoginState {}
 
 final class LoginSuccess extends LoginState {
-  // final String uid;
+  final Usermodel user;
 
-  // const LoginSuccess({required this.uid});
+  LoginSuccess({required this.user});
   // @override
   // List<Object?> get props => [uid];
 }
@@ -22,8 +22,3 @@ final class LoginFailed extends LoginState {
 }
 
 final class AuthLoadingState extends LoginState {}
-
-//
-final class GotoSignupPageState extends LoginState {}
-
-// final class SnackbarMessageState extends LoginActionState {}
