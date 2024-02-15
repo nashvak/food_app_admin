@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 // Colors used in this app
-const appColor = Color(0xFF419F7D);
+// const appColor = Color(0xFF419F7D);
+const appColor = Colors.green;
 const primaryColor = Color(0xFFF2F2F2);
 const white = Colors.white;
 const bgColor = Color.fromRGBO(247, 251, 254, 1);
